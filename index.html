@@ -54,7 +54,6 @@
       transform: translateY(-6px) scale(1.02);
       box-shadow: 0 20px 30px -10px rgba(0, 210, 255, 0.3);
     }
-    /* Estilo para barra de rolagem horizontal lisa no mobile */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -68,7 +67,6 @@
 
   <!-- HERO HEADER VIBRANTE -->
   <header class="hero-vibe text-white relative pt-12 pb-20 px-4 overflow-hidden border-b-4 border-amber-400">
-    <!-- Luzes Neon de Fundo -->
     <div class="absolute -top-20 -right-20 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-amber-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -76,17 +74,17 @@
       
       <!-- Tag do Colégio Laly -->
       <div class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-950 px-5 py-2 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-widest mb-6 shadow-lg shadow-amber-500/20 animate-bounce">
-        <i class="fa-solid fa-graduation-cap"></i> Colégio Laly
+        <i class="fa-solid fa-graduation-cap"></i> Colégio Laly — 1º Ano
       </div>
 
       <h1 class="font-title text-6xl sm:text-8xl font-black tracking-tight mb-3 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-200 to-amber-300 drop-shadow-2xl">
         GRÉCIA
       </h1>
       <p class="text-sm sm:text-xl text-cyan-100/90 max-w-xl mx-auto font-medium">
-        Explore a história, geografia e curiosidades do berço da civilização de um jeito super interativo! ⚡
+        Explore a história, geografia e o nosso musical especial de Hércules! ⚡🎭
       </p>
 
-      <!-- HIGHLIGHTS / STATS EM CARDS NEON -->
+      <!-- HIGHLIGHTS / STATS -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto mt-10">
         <div class="bg-white/5 border border-cyan-500/30 p-4 rounded-2xl text-center backdrop-blur-md">
           <div class="text-2xl sm:text-3xl font-black text-amber-400">Europa</div>
@@ -101,15 +99,15 @@
           <div class="text-[10px] sm:text-xs text-cyan-200 font-bold uppercase tracking-wider">Independência</div>
         </div>
         <div class="bg-white/5 border border-cyan-500/30 p-4 rounded-2xl text-center backdrop-blur-md">
-          <div class="text-2xl sm:text-3xl font-black text-cyan-400">13</div>
-          <div class="text-[10px] sm:text-xs text-cyan-200 font-bold uppercase tracking-wider">Regiões</div>
+          <div class="text-2xl sm:text-3xl font-black text-cyan-400">1º Ano</div>
+          <div class="text-[10px] sm:text-xs text-cyan-200 font-bold uppercase tracking-wider">Musical Hércules</div>
         </div>
       </div>
 
     </div>
   </header>
 
-  <!-- NAV BAR CORRIGIDA (Desliza suave no celular sem cortar nada!) -->
+  <!-- NAV BAR -->
   <nav class="glass-nav text-white sticky top-0 z-50 border-b border-cyan-500/20 shadow-2xl">
     <div class="max-w-5xl mx-auto px-2">
       <ul class="flex items-center gap-2 text-xs sm:text-sm font-bold py-3 overflow-x-auto no-scrollbar whitespace-nowrap">
@@ -118,6 +116,7 @@
         <li><a href="#etnica" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-cyan-500/20 hover:text-cyan-300 transition flex items-center gap-2 border border-white/10"><i class="fa-solid fa-users text-amber-400"></i> Étnica</a></li>
         <li><a href="#cronologia" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-cyan-500/20 hover:text-cyan-300 transition flex items-center gap-2 border border-white/10"><i class="fa-solid fa-timeline text-amber-400"></i> Linha do Tempo</a></li>
         <li><a href="#atualidades" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-cyan-500/20 hover:text-cyan-300 transition flex items-center gap-2 border border-white/10"><i class="fa-solid fa-fire text-amber-400"></i> 2026</a></li>
+        <li><a href="#hercules" class="px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:opacity-90 transition flex items-center gap-2 font-black shadow-lg shadow-purple-500/20"><i class="fa-solid fa-masks-theater"></i> Musical Hércules</a></li>
         <li><a href="#quiz" class="px-4 py-2 rounded-xl bg-amber-400 text-slate-950 hover:bg-amber-300 transition flex items-center gap-2 font-black shadow-lg shadow-amber-400/20"><i class="fa-solid fa-gamepad"></i> Quiz</a></li>
       </ul>
     </div>
@@ -134,7 +133,6 @@
       </div>
 
       <div class="grid sm:grid-cols-3 gap-4">
-        <!-- Card 1 -->
         <div class="bg-greek-card p-5 rounded-2xl border border-cyan-500/20 glow-card">
           <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center mb-3 text-lg font-bold">
             <i class="fa-solid fa-earth-europe"></i>
@@ -145,7 +143,6 @@
           </p>
         </div>
 
-        <!-- Card 2 -->
         <div class="bg-greek-card p-5 rounded-2xl border border-cyan-500/20 glow-card">
           <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center mb-3 text-lg font-bold">
             <i class="fa-solid fa-flag"></i>
@@ -156,7 +153,6 @@
           </p>
         </div>
 
-        <!-- Card 3 -->
         <div class="bg-greek-card p-5 rounded-2xl border border-cyan-500/20 glow-card">
           <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center mb-3 text-lg font-bold">
             <i class="fa-solid fa-building-columns"></i>
@@ -169,7 +165,7 @@
       </div>
     </section>
 
-    <!-- 2. HISTÓRIA SANFONA -->
+    <!-- 2. HISTÓRIA -->
     <section id="historico" class="bg-slate-900/80 rounded-3xl p-6 sm:p-8 border border-cyan-500/20 shadow-xl backdrop-blur-md">
       <div class="flex items-center gap-3 mb-2">
         <span class="w-10 h-10 rounded-2xl bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-950 flex items-center justify-center font-black text-xl shadow-lg shadow-amber-400/30">2</span>
@@ -178,7 +174,6 @@
       <p class="text-xs sm:text-sm text-cyan-300/80 mb-6 font-medium">Clique nas eras abaixo para ver o que aconteceu em cada época:</p>
 
       <div class="space-y-3">
-        <!-- Era 1 -->
         <div class="border border-white/10 rounded-2xl overflow-hidden bg-greek-card">
           <button onclick="toggleAccordion('acc1')" class="w-full p-4 hover:bg-white/5 flex justify-between items-center text-left font-bold text-white text-sm sm:text-base transition">
             <span class="flex items-center gap-3"><i class="fa-solid fa-crown text-amber-400"></i> Civilizações Minoica e Micênica</span>
@@ -189,7 +184,6 @@
           </div>
         </div>
 
-        <!-- Era 2 -->
         <div class="border border-white/10 rounded-2xl overflow-hidden bg-greek-card">
           <button onclick="toggleAccordion('acc2')" class="w-full p-4 hover:bg-white/5 flex justify-between items-center text-left font-bold text-white text-sm sm:text-base transition">
             <span class="flex items-center gap-3"><i class="fa-solid fa-shield-halved text-cyan-400"></i> A Era das Pólis (Atenas e Esparta)</span>
@@ -200,7 +194,6 @@
           </div>
         </div>
 
-        <!-- Era 3 -->
         <div class="border border-white/10 rounded-2xl overflow-hidden bg-greek-card">
           <button onclick="toggleAccordion('acc3')" class="w-full p-4 hover:bg-white/5 flex justify-between items-center text-left font-bold text-white text-sm sm:text-base transition">
             <span class="flex items-center gap-3"><i class="fa-solid fa-chess-king text-amber-400"></i> Alexandre, o Grande & Impérios</span>
@@ -242,7 +235,6 @@
         <h2 class="font-title text-2xl sm:text-3xl font-extrabold text-white">Linha do Tempo</h2>
       </div>
 
-      <!-- Filtros -->
       <div class="flex flex-wrap gap-2 mb-4">
         <button onclick="filterTimeline('all', this)" class="t-btn active px-4 py-2 rounded-xl text-xs font-extrabold bg-amber-400 text-slate-950 shadow-md">Todos os Fatos</button>
         <button onclick="filterTimeline('antiga', this)" class="t-btn px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-slate-300 hover:bg-white/10">Antiguidade</button>
@@ -250,7 +242,6 @@
         <button onclick="filterTimeline('moderna', this)" class="t-btn px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-slate-300 hover:bg-white/10">Séc. XIX ao XXI</button>
       </div>
 
-      <!-- Lista de Fatos -->
       <div id="timelineContainer" class="max-h-80 overflow-y-auto divide-y divide-white/10 border border-white/10 rounded-2xl bg-slate-950/60 p-2">
       </div>
     </section>
@@ -281,10 +272,46 @@
       </div>
     </section>
 
-    <!-- 6. QUIZ INTERATIVO GAMIFICADO -->
+    <!-- 6. FILME DO HÉRCOLES & MUSICAL DA SALA -->
+    <section id="hercules" class="bg-gradient-to-br from-purple-900/90 via-slate-900 to-pink-950/80 rounded-3xl p-6 sm:p-8 border-2 border-purple-500/40 shadow-2xl backdrop-blur-md relative overflow-hidden">
+      <div class="absolute -top-10 -right-10 w-48 h-48 bg-pink-500/20 rounded-full blur-2xl"></div>
+
+      <div class="flex items-center gap-3 mb-6 relative z-10">
+        <span class="w-10 h-10 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center font-black text-xl shadow-lg shadow-purple-500/30">6</span>
+        <div>
+          <h2 class="font-title text-2xl sm:text-3xl font-extrabold text-white">Filme Hércules & Nosso Musical</h2>
+          <p class="text-xs text-pink-300">Apresentação especial da turma do 1º Ano</p>
+        </div>
+      </div>
+
+      <div class="space-y-4 relative z-10">
+        <div class="bg-slate-950/60 p-5 rounded-2xl border border-purple-500/30">
+          <h3 class="font-bold text-pink-300 text-base mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-film text-purple-400"></i> Resumo Rápido do Filme Hércules
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+            Filho dos deuses Zeus e Hera, Hércules tem sua divindade roubada pelo vilão Hades e é criado na Terra como um humano com força sobre-humana. Para retornar ao Monte Olimpo e provar seu valor, ele precisa realizar atos heróicos verdadeiros, aprendendo que o valor de um verdadeiro herói não está no tamanho da sua força, mas na nobreza do seu coração.
+          </p>
+        </div>
+
+        <div class="bg-gradient-to-r from-purple-500/20 to-pink-500/20 p-5 rounded-2xl border border-pink-500/40 flex flex-col sm:flex-row items-center gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center font-black text-2xl shrink-0 shadow-lg">
+            🎭
+          </div>
+          <div>
+            <h4 class="font-bold text-white text-base mb-1">Nosso Musical — 1º Ano Colégio Laly</h4>
+            <p class="text-xs sm:text-sm text-pink-100/90 leading-relaxed">
+              Inspirados na rica mitologia grega e no clássico filme da Disney, nossa sala do <strong>1º ano</strong> decidiu montar um musical completo! Vamos encenar as aventuras, lições e músicas inesquecíveis da história de Hércules!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <!-- 7. QUIZ INTERATIVO GAMIFICADO -->
     <section id="quiz" class="bg-gradient-to-br from-blue-950 via-slate-900 to-slate-950 text-white rounded-3xl p-6 sm:p-8 border-2 border-amber-400/50 shadow-2xl relative overflow-hidden">
       <div class="flex items-center gap-3 mb-6">
-        <span class="w-10 h-10 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center font-black text-xl shadow-lg shadow-amber-400/30">6</span>
+        <span class="w-10 h-10 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center font-black text-xl shadow-lg shadow-amber-400/30">7</span>
         <div>
           <h2 class="font-title text-2xl sm:text-3xl font-extrabold text-white">Quiz de Fixação</h2>
           <p class="text-xs text-cyan-300">Escolha as alternativas corretas:</p>
@@ -292,7 +319,6 @@
       </div>
 
       <div class="space-y-6">
-        <!-- Q1 -->
         <div class="bg-white/5 p-5 rounded-2xl border border-white/10">
           <p class="font-bold text-amber-300 text-sm sm:text-base mb-3">1. Qual cidade-Estado grega criou a democracia?</p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
@@ -301,7 +327,6 @@
           </div>
         </div>
 
-         <!-- Q2 -->
         <div class="bg-white/5 p-5 rounded-2xl border border-white/10">
           <p class="font-bold text-amber-300 text-sm sm:text-base mb-3">2. Em que ano a independência da Grécia foi reconhecida?</p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
@@ -310,12 +335,11 @@
           </div>
         </div>
 
-        <!-- Q3 -->
         <div class="bg-white/5 p-5 rounded-2xl border border-white/10">
-          <p class="font-bold text-amber-300 text-sm sm:text-base mb-3">3. Qual acordo fez a troca populacional em 1923?</p>
+          <p class="font-bold text-amber-300 text-sm sm:text-base mb-3">3. Qual o tema do musical escolhido pela turma do 1º ano?</p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
-            <button onclick="answer(3, 'lausanne', this)" class="q3-btn p-3 rounded-xl bg-white/10 text-left hover:bg-white/20 transition border border-white/5 font-semibold">A) Tratado de Lausanne</button>
-            <button onclick="answer(3, 'roma', this)" class="q3-btn p-3 rounded-xl bg-white/10 text-left hover:bg-white/20 transition border border-white/5 font-semibold">B) Tratado de Roma</button>
+            <button onclick="answer(3, 'hercules', this)" class="q3-btn p-3 rounded-xl bg-white/10 text-left hover:bg-white/20 transition border border-white/5 font-semibold">A) Musical Hércules</button>
+            <button onclick="answer(3, 'roma', this)" class="q3-btn p-3 rounded-xl bg-white/10 text-left hover:bg-white/20 transition border border-white/5 font-semibold">B) Gladiadores de Roma</button>
           </div>
         </div>
 
@@ -327,11 +351,10 @@
 
   <footer class="bg-slate-950 text-slate-500 text-center py-8 text-xs border-t border-slate-900">
     <p class="font-bold text-slate-300 mb-1">Trabalho de Geografia & História — Grécia</p>
-    <p>Colégio Laly © 2026</p>
+    <p>Colégio Laly — 1º Ano © 2026</p>
   </footer>
 
   <script>
-    // Accordion Logic
     function toggleAccordion(id) {
       const el = document.getElementById(id);
       const icon = document.getElementById(id + '-icon');
@@ -344,7 +367,6 @@
       }
     }
 
-    // Timeline Data
     const events = [
       { date: "3000–1450 a.C.", text: "Desenvolvimento da civilização minoica na ilha de Creta.", cat: "antiga" },
       { date: "1600–1200 a.C.", text: "Florescimento da civilização micênica.", cat: "antiga" },
@@ -385,7 +407,6 @@
       renderTimeline(cat);
     }
 
-    // Quiz Dynamic Interaction
     let score = { 1: false, 2: false, 3: false };
 
     function answer(q, val, btn) {
@@ -394,7 +415,7 @@
         b.classList.add('bg-white/10');
       });
 
-      const correct = { 1: 'atenas', 2: '1830', 3: 'lausanne' };
+      const correct = { 1: 'atenas', 2: '1830', 3: 'hercules' };
 
       if (val === correct[q]) {
         btn.classList.remove('bg-white/10');
