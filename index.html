@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grécia — Colégio Laly</title>
+  <style>
+    :root {
+      --blue-main: #0d47a1;
+      --blue-light: #1e88e5;
+      --blue-bg: #e3f2fd;
+      --dark-text: #1a237e;
+      --card-bg: #ffffff;
+      --gold: #f57f17;
+      --accent: #00bcd4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f7f6;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--blue-main), var(--blue-light));
+      color: white;
+      padding: 3rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.3rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+      font-weight: 300;
+    }
+
+    .badge {
+      background: var(--gold);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-top: 0.8rem;
+    }
+
+    nav {
+      background: #0a3578;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 1rem 1.2rem;
+      display: block;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: var(--blue-light);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    }
+
+    h2 {
+      color: var(--dark-text);
+      border-bottom: 3px solid var(--blue-light);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.8rem;
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background: var(--blue-bg);
+      border-left: 5px solid var(--blue-main);
+      padding: 1.2rem;
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      color: var(--blue-main);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Linha do tempo interativa */
+    .timeline-filter {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #e0e0e0;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--blue-main);
+      color: white;
+    }
+
+    .timeline-list {
+      max-height: 480px;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+    }
+
+    .timeline-item {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+
+    .timeline-item:nth-child(even) {
+      background: #fafafa;
+    }
+
+    .timeline-date {
+      font-weight: bold;
+      color: var(--blue-main);
+      min-width: 140px;
+    }
+
+    /* Quiz Interativo */
+    .quiz-option {
+      display: block;
+      background: #f0f4f8;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--blue-light);
+    }
+
+    .quiz-btn {
+      background: var(--blue-main);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .quiz-btn:hover {
+      background: var(--blue-light);
+    }
+
+    #quiz-result {
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.8rem;
+      background: var(--dark-text);
+      color: white;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Grécia</h1>
+    <p>Geografia, História, Formação Étnica & Cronologia</p>
+    <span class="badge">Colégio Laly</span>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#geografia">Geografia & Política</a></li>
+      <li><a href="#historico">Formação Histórica</a></li>
+      <li><a href="#etnica">Formação Étnica</a></li>
+      <li><a href="#cronologia">Linha do Tempo</a></li>
+      <li><a href="#atualidades">Atualidades</a></li>
+      <li><a href="#quiz">Quiz Interativo</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <!-- GEOGRAFIA E LOCALIZAÇÃO -->
+    <section id="geografia">
+      <h2>1. Localização & Divisão Política</h2>
+      <div class="grid-cards">
+        <div class="card">
+          <h3>Localização Continente</h3>
+          <p><strong>Continente:</strong> Europa (Europa Meridional / Sudeste da Europa).</p>
+          <p><strong>Região:</strong> Posição estratégica no extremo sul da Península Balcânica (Bálcãs). Conexão natural entre a Europa, o Norte da África e o Oriente Médio.</p>
+        </div>
+        <div class="card">
+          <h3>Formação Territorial</h3>
+          <p>Na Antiguidade, era constituída por cidades-Estado independentes (como Atenas e Esparta). Esteve sob múltiplos domínios até conquistar a independência do Império Otomano em 1830, expandindo seu território gradualmente até a configuração atual.</p>
+        </div>
+        <div class="card">
+          <h3>Divisão Política e Administrativa</h3>
+          <p><strong>Forma de Governo:</strong> República Parlamentarista (Presidente e Primeiro-Ministro).</p>
+          <p><strong>Capital:</strong> Atenas.</p>
+          <p><strong>Divisão:</strong> 13 regiões administrativas divididas em municípios, além de inúmeras ilhas de destaque como Creta, Rodes e Corfu.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMAÇÃO HISTÓRICA -->
+    <section id="historico">
+      <h2>2. Formação Histórica</h2>
+      <p>A história da Grécia iniciou-se há milhares de anos com o surgimento das civilizações egeias. Destacaram-se a <strong>civilização minoica</strong> (na ilha de Creta) e a <strong>civilização micênica</strong> (no continente), conhecidas pelo comércio marítimo, grandes palácios e pelas primeiras manifestações da língua grega.</p>
+      <br>
+      <p>A partir de 800 a.C., deu-se o florescimento das <strong>pólis</strong> (cidades-Estado). Atenas consolidou modelos pioneiros de democracia e transformou-se em polo de arte e filosofia, ao passo que Esparta estruturou-se sob rígida disciplina militar.</p>
+      <br>
+      <p>No século IV a.C., a Macedônia assumiu a hegemonia. Alexandre, o Grande, expandiu as fronteiras pela Ásia e Egito, inaugurando o <strong>período helenístico</strong>. Subsequentemente, o território foi integrado ao Império Romano e, mais tarde, ao Império Bizantino.</p>
+      <br>
+      <p>A tomada de Constantinopla em 1453 submeteu a Grécia ao domínio do Império Otomano até a eclosão da Guerra de Independência em 1821, reconhecida em 1830.</p>
+    </section>
+
+    <!-- FORMAÇÃO ÉTNICA -->
+    <section id="etnica">
+      <h2>3. Formação Étnica</h2>
+      <p>A estrutura étnica grega resulta da integração secular de fluxos migratórios e trocas culturais. Na Antiguidade, povos helênicos originais como aqueus, jônios, eólios e dórios lançaram as fundações culturais da região.</p>
+      <br>
+      <p>Ao longo das eras romana, bizantina e medieval, a região absorveu contatos demográficos com outros povos do Mediterrâneo, eslavos e albaneses. No período otomano, conviveram gregos, turcos, albaneses e judeus.</p>
+      <br>
+      <div class="card" style="margin-top: 1rem;">
+        <h3>Tratado de Lausanne (1923)</h3>
+        <p>Um marco decisivo na história demográfica moderna ocorreu em 1923 com o Tratado de Lausanne, que estipulou a troca populacional compulsória entre Grécia e Turquia. Atualmente, embora a maioria da população se identifique como grega, o país preserva minorias com tradições culturais variadas.</p>
+      </div>
+    </section>
+
+    <!-- CRONOLOGIA / LINHA DO TEMPO -->
+    <section id="cronologia">
+      <h2>4. Cronologia dos Principais Fatos</h2>
+      
+      <div class="timeline-filter">
+        <button class="filter-btn active" onclick="filterTimeline('all')">Todos os Períodos</button>
+        <button class="filter-btn" onclick="filterTimeline('antiga')">Antiguidade</button>
+        <button class="filter-btn" onclick="filterTimeline('bizantina')">Bizantina & Otomana</button>
+        <button class="filter-btn" onclick="filterTimeline('moderna')">Independência & Séc. XX/XXI</button>
+      </div>
+
+      <div class="timeline-list" id="timelineList">
+        <!-- Itens injetados via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ATUALIDADES -->
+    <section id="atualidades">
+      <h2>5. Atualidades da Grécia (2026)</h2>
+      <div class="grid-cards">
+        <div class="card">
+          <h3>Desafios Climáticos (Outubro/2026)</h3>
+          <p>Tempestades e chuvas intensas provocaram enchentes expressivas em ilhas turísticas como Rodes, acionando equipes de resgate e intensificando o debate sobre infraestrutura.</p>
+        </div>
+        <div class="card">
+          <h3>Sócio-Economia & Migração</h3>
+          <p>O país lida ativamente com a gestão dos fluxos migratórios na rota do Mediterrâneo, além dos desafios do custo de vida e serviços públicos na contemporaneidade.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ INTERATIVO -->
+    <section id="quiz">
+      <h2>6. Quiz de Fixação</h2>
+      <div id="quiz-container">
+        <p><strong>1. Qual cidade-Estado grega se destacou no desenvolvimento da democracia?</strong></p>
+        <label class="quiz-option"><input type="radio" name="q1" value="esparta"> Esparta</label>
+        <label class="quiz-option"><input type="radio" name="q1" value="atenas"> Atenas</label>
+        <label class="quiz-option"><input type="radio" name="q1" value="corinto"> Corinto</label>
+
+        <br>
+        <p><strong>2. Em que ano o reconhecimento internacional da independência grega se oficializou?</strong></p>
+        <label class="quiz-option"><input type="radio" name="q2" value="1453"> 1453</label>
+        <label class="quiz-option"><input type="radio" name="q2" value="1830"> 1830</label>
+        <label class="quiz-option"><input type="radio" name="q2" value="1923"> 1923</label>
+
+        <br>
+        <p><strong>3. O Tratado de Lausanne (1923) ficou conhecido historicamente por estabelecer:</strong></p>
+        <label class="quiz-option"><input type="radio" name="q3" value="lausanne"> A troca populacional compulsória entre Grécia e Turquia</label>
+        <label class="quiz-option"><input type="radio" name="q3" value="fronteira"> A anexação das ilhas Jônicas</label>
+        <label class="quiz-option"><input type="radio" name="q3" value="euro"> A adoção imediata do Euro</label>
+
+        <button class="quiz-btn" onclick="checkQuiz()">Verificar Respostas</button>
+        <div id="quiz-result"></div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Trabalho de Geografia & História — Grécia | Colégio Laly</p>
+  </footer>
+
+  <script>
+    const events = [
+      { date: "3000–1450 a.C.", text: "Desenvolvimento da civilização minoica na ilha de Creta.", cat: "antiga" },
+      { date: "1600–1200 a.C.", text: "Florescimento da civilização micênica no continente.", cat: "antiga" },
+      { date: "c. 1200 a.C.", text: "Declínio dos centros micênicos e transformações sociais.", cat: "antiga" },
+      { date: "800 a.C.", text: "Expansão das cidades-Estado (pólis) e do comércio marítimo.", cat: "antiga" },
+      { date: "508–507 a.C.", text: "Reformas de Clístenes em Atenas (bases da democracia).", cat: "antiga" },
+      { date: "490–479 a.C.", text: "Guerras Médicas contra o Império Persa.", cat: "antiga" },
+      { date: "431–404 a.C.", text: "Guerra do Peloponeso entre Atenas e Esparta.", cat: "antiga" },
+      { date: "338 a.C.", text: "Vitória macedônica na Batalha de Queroneia.", cat: "antiga" },
+      { date: "336–323 a.C.", text: "Reinado e conquistas de Alexandre, o Grande.", cat: "antiga" },
+      { date: "323 a.C.", text: "Início do Período Helenístico.", cat: "antiga" },
+      { date: "146 a.C.", text: "Conquista romana da Grécia continental.", cat: "antiga" },
+      { date: "330 d.C.", text: "Fundação de Constantinopla (Império Romano do Oriente).", cat: "bizantina" },
+      { date: "1054", text: "Cisma entre a Igreja Católica Romana e Ortodoxa.", cat: "bizantina" },
+      { date: "1204", text: "Conquista de Constantinopla na Quarta Cruzada.", cat: "bizantina" },
+      { date: "1261", text: "Recuperação bizantina de Constantinopla.", cat: "bizantina" },
+      { date: "1453", text: "Conquista de Constantinopla pelo Império Otomano.", cat: "bizantina" },
+      { date: "1821", text: "Início da Guerra de Independência Grega.", cat: "moderna" },
+      { date: "1830", text: "Reconhecimento internacional da independência da Grécia.", cat: "moderna" },
+      { date: "1832", text: "Estabelecimento da monarquia grega.", cat: "moderna" },
+      { date: "1834", text: "Atenas passa a ser a capital oficial.", cat: "moderna" },
+      { date: "1864", text: "Incorporação das Ilhas Jônicas.", cat: "moderna" },
+      { date: "1912–1913", text: "Guerras Balcânicas e expansão do território.", cat: "moderna" },
+      { date: "1919–1922", text: "Guerra Greco-Turca.", cat: "moderna" },
+      { date: "1923", text: "Assinatura do Tratado de Lausanne (troca populacional).", cat: "moderna" },
+      { date: "1940–1944", text: "Segunda Guerra Mundial e ocupação pelas forças do Eixo.", cat: "moderna" },
+      { date: "1946–1949", text: "Guerra Civil Grega.", cat: "moderna" },
+      { date: "1947", text: "Incorporação das ilhas do Dodecaneso.", cat: "moderna" },
+      { date: "1967–1974", text: "Ditadura militar e posterior restauração da democracia.", cat: "moderna" },
+      { date: "1981", text: "Adesão à Comunidade Econômica Europeia.", cat: "moderna" },
+      { date: "2001-2002", text: "Adoção oficial do Euro em substituição à dracma.", cat: "moderna" },
+      { date: "2009–2018", text: "Crise da dívida pública e programas de austeridade.", cat: "moderna" },
+      { date: "2020", text: "Eleição de Katerina Sakellaropoulou (1ª mulher presidente).", cat: "moderna" },
+      { date: "2023", text: "Acidentes ferroviários e debates sobre infraestrutura pública.", cat: "moderna" },
+      { date: "2024-2026", text: "Reformas econômicas e desafios climáticos (enchentes em Rodes).", cat: "moderna" }
+    ];
+
+    function renderTimeline(filter = 'all') {
+      const container = document.getElementById('timelineList');
+      container.innerHTML = '';
+      
+      const filteredEvents = filter === 'all' ? events : events.filter(e => e.cat === filter);
+      
+      filteredEvents.forEach(e => {
+        const item = document.createElement('div');
+        item.className = 'timeline-item';
+        item.innerHTML = `<span class="timeline-date">${e.date}</span><span>${e.text}</span>`;
+        container.appendChild(item);
+      });
+    }
+
+    function filterTimeline(cat) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      renderTimeline(cat);
+    }
+
+    function checkQuiz() {
+      let score = 0;
+      const q1 = document.querySelector('input[name="q1"]:checked')?.value;
+      const q2 = document.querySelector('input[name="q2"]:checked')?.value;
+      const q3 = document.querySelector('input[name="q3"]:checked')?.value;
+
+      if (q1 === 'atenas') score++;
+      if (q2 === '1830') score++;
+      if (q3 === 'lausanne') score++;
+
+      const res = document.getElementById('quiz-result');
+      if (score === 3) {
+        res.style.color = '#2e7d32';
+        res.innerText = 'Excelente! Você acertou todas as 3 perguntas!';
+      } else {
+        res.style.color = '#c62828';
+        res.innerText = `Você acertou ${score} de 3 perguntas. Revise os pontos e tente novamente!`;
+      }
+    }
+
+    renderTimeline();
+  </script>
+</body>
+</html>
