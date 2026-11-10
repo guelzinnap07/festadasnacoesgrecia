@@ -1,418 +1,346 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Grécia — Colégio Laly</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            greek: {
+              blue: '#0d47a1',
+              light: '#1e88e5',
+              sky: '#e3f2fd',
+              gold: '#d4af37',
+              dark: '#0a192f',
+              accent: '#00bcd4'
+            }
+          },
+          fontFamily: {
+            title: ['Cinzel', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    :root {
-      --blue-main: #0d47a1;
-      --blue-light: #1e88e5;
-      --blue-bg: #e3f2fd;
-      --dark-text: #1a237e;
-      --card-bg: #ffffff;
-      --gold: #f57f17;
-      --accent: #00bcd4;
+    .glass-nav {
+      background: rgba(10, 25, 47, 0.95);
+      backdrop-filter: blur(10px);
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background-color: #f4f7f6;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    header {
-      background: linear-gradient(135deg, var(--blue-main), var(--blue-light));
-      color: white;
-      padding: 3rem 1rem;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      position: relative;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.3rem;
-      letter-spacing: 1px;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.95;
-      font-weight: 300;
-    }
-
-    .badge {
-      background: var(--gold);
-      color: white;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      display: inline-block;
-      margin-top: 0.8rem;
-    }
-
-    nav {
-      background: #0a3578;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    nav ul {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 1rem 1.2rem;
-      display: block;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: background 0.3s;
-    }
-
-    nav a:hover {
-      background: var(--blue-light);
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    section {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
-    }
-
-    h2 {
-      color: var(--dark-text);
-      border-bottom: 3px solid var(--blue-light);
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.2rem;
-      font-size: 1.8rem;
-    }
-
-    .grid-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-
-    .card {
-      background: var(--blue-bg);
-      border-left: 5px solid var(--blue-main);
-      padding: 1.2rem;
-      border-radius: 8px;
-    }
-
-    .card h3 {
-      color: var(--blue-main);
-      margin-bottom: 0.5rem;
-    }
-
-    /* Linha do tempo interativa */
-    .timeline-filter {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      background: #e0e0e0;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--blue-main);
-      color: white;
-    }
-
-    .timeline-list {
-      max-height: 480px;
-      overflow-y: auto;
-      padding-right: 0.5rem;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-    }
-
-    .timeline-item {
-      padding: 0.9rem 1rem;
-      border-bottom: 1px solid #eee;
-      display: flex;
-      gap: 1rem;
-      align-items: baseline;
-    }
-
-    .timeline-item:nth-child(even) {
-      background: #fafafa;
-    }
-
-    .timeline-date {
-      font-weight: bold;
-      color: var(--blue-main);
-      min-width: 140px;
-    }
-
-    /* Quiz Interativo */
-    .quiz-option {
-      display: block;
-      background: #f0f4f8;
-      padding: 0.8rem;
-      margin: 0.5rem 0;
-      border-radius: 6px;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: all 0.2s;
-    }
-
-    .quiz-option:hover {
-      border-color: var(--blue-light);
-    }
-
-    .quiz-btn {
-      background: var(--blue-main);
-      color: white;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 1rem;
-    }
-
-    .quiz-btn:hover {
-      background: var(--blue-light);
-    }
-
-    #quiz-result {
-      margin-top: 1rem;
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1.8rem;
-      background: var(--dark-text);
-      color: white;
-      margin-top: 3rem;
+    .greek-pattern {
+      background-color: #0d47a1;
+      background-image: radial-gradient(#1e88e5 1px, transparent 1px);
+      background-size: 20px 20px;
     }
   </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-  <header>
-    <h1>Grécia</h1>
-    <p>Geografia, História, Formação Étnica & Cronologia</p>
-    <span class="badge">Colégio Laly</span>
+  <!-- Header / Hero Section -->
+  <header class="greek-pattern text-white relative py-16 px-4 shadow-xl border-b-4 border-greek-gold">
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+      
+      <!-- Insígnia do Colégio -->
+      <div class="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-400/40 text-amber-300 px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase mb-6 backdrop-blur-sm">
+        <i class="fa-solid fa-graduation-cap"></i> Colégio Laly — Trabalho de Geografia & História
+      </div>
+
+      <h1 class="font-title text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-wide mb-4 text-white drop-shadow-md">
+        GRÉCIA
+      </h1>
+      <p class="text-base sm:text-xl text-blue-100 max-w-2xl mx-auto font-light leading-relaxed">
+        Formação Territorial, Aspectos Étnicos, Evolução Histórica & Atualidades
+      </p>
+    </div>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="#geografia">Geografia & Política</a></li>
-      <li><a href="#historico">Formação Histórica</a></li>
-      <li><a href="#etnica">Formação Étnica</a></li>
-      <li><a href="#cronologia">Linha do Tempo</a></li>
-      <li><a href="#atualidades">Atualidades</a></li>
-      <li><a href="#quiz">Quiz Interativo</a></li>
-    </ul>
+  <!-- Sticky Navbar -->
+  <nav class="glass-nav text-white sticky top-0 z-50 shadow-md border-b border-slate-700">
+    <div class="max-w-6xl mx-auto px-4">
+      <ul class="flex flex-wrap justify-center items-center text-xs sm:text-sm font-medium">
+        <li><a href="#geografia" class="block py-3 px-3 sm:px-4 hover:text-amber-400 transition-colors"><i class="fa-solid fa-map-location-dot mr-1"></i> Geografia</a></li>
+        <li><a href="#historico" class="block py-3 px-3 sm:px-4 hover:text-amber-400 transition-colors"><i class="fa-solid fa-landmark mr-1"></i> História</a></li>
+        <li><a href="#etnica" class="block py-3 px-3 sm:px-4 hover:text-amber-400 transition-colors"><i class="fa-solid fa-users mr-1"></i> Étnica</a></li>
+        <li><a href="#cronologia" class="block py-3 px-3 sm:px-4 hover:text-amber-400 transition-colors"><i class="fa-solid fa-clock-rotate-left mr-1"></i> Linha do Tempo</a></li>
+        <li><a href="#atualidades" class="block py-3 px-3 sm:px-4 hover:text-amber-400 transition-colors"><i class="fa-solid fa-newspaper mr-1"></i> Atualidades</a></li>
+        <li><a href="#quiz" class="block py-3 px-3 sm:px-4 hover:text-amber-400 transition-colors text-amber-300 font-bold"><i class="fa-solid fa-circle-question mr-1"></i> Quiz</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <div class="container">
+  <!-- Main Container -->
+  <main class="max-w-5xl mx-auto px-4 py-10 space-y-12">
 
-    <!-- GEOGRAFIA E LOCALIZAÇÃO -->
-    <section id="geografia">
-      <h2>1. Localização & Divisão Política</h2>
-      <div class="grid-cards">
-        <div class="card">
-          <h3>Localização Continente</h3>
-          <p><strong>Continente:</strong> Europa (Europa Meridional / Sudeste da Europa).</p>
-          <p><strong>Região:</strong> Posição estratégica no extremo sul da Península Balcânica (Bálcãs). Conexão natural entre a Europa, o Norte da África e o Oriente Médio.</p>
-        </div>
-        <div class="card">
-          <h3>Formação Territorial</h3>
-          <p>Na Antiguidade, era constituída por cidades-Estado independentes (como Atenas e Esparta). Esteve sob múltiplos domínios até conquistar a independência do Império Otomano em 1830, expandindo seu território gradualmente até a configuração atual.</p>
-        </div>
-        <div class="card">
-          <h3>Divisão Política e Administrativa</h3>
-          <p><strong>Forma de Governo:</strong> República Parlamentarista (Presidente e Primeiro-Ministro).</p>
-          <p><strong>Capital:</strong> Atenas.</p>
-          <p><strong>Divisão:</strong> 13 regiões administrativas divididas em municípios, além de inúmeras ilhas de destaque como Creta, Rodes e Corfu.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FORMAÇÃO HISTÓRICA -->
-    <section id="historico">
-      <h2>2. Formação Histórica</h2>
-      <p>A história da Grécia iniciou-se há milhares de anos com o surgimento das civilizações egeias. Destacaram-se a <strong>civilização minoica</strong> (na ilha de Creta) e a <strong>civilização micênica</strong> (no continente), conhecidas pelo comércio marítimo, grandes palácios e pelas primeiras manifestações da língua grega.</p>
-      <br>
-      <p>A partir de 800 a.C., deu-se o florescimento das <strong>pólis</strong> (cidades-Estado). Atenas consolidou modelos pioneiros de democracia e transformou-se em polo de arte e filosofia, ao passo que Esparta estruturou-se sob rígida disciplina militar.</p>
-      <br>
-      <p>No século IV a.C., a Macedônia assumiu a hegemonia. Alexandre, o Grande, expandiu as fronteiras pela Ásia e Egito, inaugurando o <strong>período helenístico</strong>. Subsequentemente, o território foi integrado ao Império Romano e, mais tarde, ao Império Bizantino.</p>
-      <br>
-      <p>A tomada de Constantinopla em 1453 submeteu a Grécia ao domínio do Império Otomano até a eclosão da Guerra de Independência em 1821, reconhecida em 1830.</p>
-    </section>
-
-    <!-- FORMAÇÃO ÉTNICA -->
-    <section id="etnica">
-      <h2>3. Formação Étnica</h2>
-      <p>A estrutura étnica grega resulta da integração secular de fluxos migratórios e trocas culturais. Na Antiguidade, povos helênicos originais como aqueus, jônios, eólios e dórios lançaram as fundações culturais da região.</p>
-      <br>
-      <p>Ao longo das eras romana, bizantina e medieval, a região absorveu contatos demográficos com outros povos do Mediterrâneo, eslavos e albaneses. No período otomano, conviveram gregos, turcos, albaneses e judeus.</p>
-      <br>
-      <div class="card" style="margin-top: 1rem;">
-        <h3>Tratado de Lausanne (1923)</h3>
-        <p>Um marco decisivo na história demográfica moderna ocorreu em 1923 com o Tratado de Lausanne, que estipulou a troca populacional compulsória entre Grécia e Turquia. Atualmente, embora a maioria da população se identifique como grega, o país preserva minorias com tradições culturais variadas.</p>
-      </div>
-    </section>
-
-    <!-- CRONOLOGIA / LINHA DO TEMPO -->
-    <section id="cronologia">
-      <h2>4. Cronologia dos Principais Fatos</h2>
-      
-      <div class="timeline-filter">
-        <button class="filter-btn active" onclick="filterTimeline('all')">Todos os Períodos</button>
-        <button class="filter-btn" onclick="filterTimeline('antiga')">Antiguidade</button>
-        <button class="filter-btn" onclick="filterTimeline('bizantina')">Bizantina & Otomana</button>
-        <button class="filter-btn" onclick="filterTimeline('moderna')">Independência & Séc. XX/XXI</button>
+    <!-- SEÇÃO 1: GEOGRAFIA E LOCALIZAÇÃO -->
+    <section id="geografia" class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-slate-100">
+      <div class="flex items-center gap-3 mb-6 border-b pb-4 border-slate-100">
+        <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xl">1</div>
+        <h2 class="font-title text-2xl md:text-3xl font-bold text-slate-900">Localização & Divisão Política</h2>
       </div>
 
-      <div class="timeline-list" id="timelineList">
-        <!-- Itens injetados via JavaScript -->
-      </div>
-    </section>
-
-    <!-- ATUALIDADES -->
-    <section id="atualidades">
-      <h2>5. Atualidades da Grécia (2026)</h2>
-      <div class="grid-cards">
-        <div class="card">
-          <h3>Desafios Climáticos (Outubro/2026)</h3>
-          <p>Tempestades e chuvas intensas provocaram enchentes expressivas em ilhas turísticas como Rodes, acionando equipes de resgate e intensificando o debate sobre infraestrutura.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-blue-50/60 border-l-4 border-blue-600 p-5 rounded-r-xl">
+          <h3 class="font-bold text-blue-900 text-lg mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-earth-europe text-blue-600"></i> Localização Continente
+          </h3>
+          <p class="text-sm text-slate-700 leading-relaxed">
+            <strong>Continente:</strong> Europa (Europa Meridional / Sudeste da Europa).<br><br>
+            <strong>Região:</strong> Posição estratégica no extremo sul da Península Balcânica (Bálcãs). Serve de conexão natural entre o continente europeu, o Norte da África e o Oriente Médio.
+          </p>
         </div>
-        <div class="card">
-          <h3>Sócio-Economia & Migração</h3>
-          <p>O país lida ativamente com a gestão dos fluxos migratórios na rota do Mediterrâneo, além dos desafios do custo de vida e serviços públicos na contemporaneidade.</p>
+
+        <!-- Card 2 -->
+        <div class="bg-blue-50/60 border-l-4 border-blue-600 p-5 rounded-r-xl">
+          <h3 class="font-bold text-blue-900 text-lg mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-draw-polygon text-blue-600"></i> Formação Territorial
+          </h3>
+          <p class="text-sm text-slate-700 leading-relaxed">
+            Na Antiguidade, era formada por cidades-Estado independentes (Atenas e Esparta). Passou por diferentes domínios até conquistar sua independência do Império Otomano em 1830. Seu território foi ampliado gradualmente até as fronteiras atuais.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-blue-50/60 border-l-4 border-blue-600 p-5 rounded-r-xl">
+          <h3 class="font-bold text-blue-900 text-lg mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-building-columns text-blue-600"></i> Divisão Administrativa
+          </h3>
+          <p class="text-sm text-slate-700 leading-relaxed">
+            <strong>Governo:</strong> República Parlamentarista (Presidente e Primeiro-Ministro).<br>
+            <strong>Capital:</strong> Atenas.<br>
+            <strong>Divisão:</strong> 13 regiões divididas em municípios, além de inúmeras ilhas de destaque como Creta, Rodes e Corfu.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- QUIZ INTERATIVO -->
-    <section id="quiz">
-      <h2>6. Quiz de Fixação</h2>
-      <div id="quiz-container">
-        <p><strong>1. Qual cidade-Estado grega se destacou no desenvolvimento da democracia?</strong></p>
-        <label class="quiz-option"><input type="radio" name="q1" value="esparta"> Esparta</label>
-        <label class="quiz-option"><input type="radio" name="q1" value="atenas"> Atenas</label>
-        <label class="quiz-option"><input type="radio" name="q1" value="corinto"> Corinto</label>
+    <!-- SEÇÃO 2: FORMAÇÃO HISTÓRICA -->
+    <section id="historico" class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-slate-100">
+      <div class="flex items-center gap-3 mb-6 border-b pb-4 border-slate-100">
+        <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xl">2</div>
+        <h2 class="font-title text-2xl md:text-3xl font-bold text-slate-900">Formação Histórica</h2>
+      </div>
 
-        <br>
-        <p><strong>2. Em que ano o reconhecimento internacional da independência grega se oficializou?</strong></p>
-        <label class="quiz-option"><input type="radio" name="q2" value="1453"> 1453</label>
-        <label class="quiz-option"><input type="radio" name="q2" value="1830"> 1830</label>
-        <label class="quiz-option"><input type="radio" name="q2" value="1923"> 1923</label>
-
-        <br>
-        <p><strong>3. O Tratado de Lausanne (1923) ficou conhecido historicamente por estabelecer:</strong></p>
-        <label class="quiz-option"><input type="radio" name="q3" value="lausanne"> A troca populacional compulsória entre Grécia e Turquia</label>
-        <label class="quiz-option"><input type="radio" name="q3" value="fronteira"> A anexação das ilhas Jônicas</label>
-        <label class="quiz-option"><input type="radio" name="q3" value="euro"> A adoção imediata do Euro</label>
-
-        <button class="quiz-btn" onclick="checkQuiz()">Verificar Respostas</button>
-        <div id="quiz-result"></div>
+      <div class="prose max-w-none text-slate-700 space-y-4 text-sm md:text-base leading-relaxed">
+        <p>
+          A história da Grécia começou há milhares de anos com o desenvolvimento das primeiras civilizações na região do mar Egeu. Entre as mais importantes estavam a <strong>civilização minoica</strong> (ilha de Creta) e a <strong>civilização micênica</strong> (continente), destacando-se pelo comércio marítimo, grandes palácios e primeiras formas da língua grega.
+        </p>
+        <p>
+          A partir de 800 a.C., surgiram as <strong>pólis</strong> (cidades-Estado). Atenas desenvolveu a democracia e tornou-se centro de arte e filosofia, enquanto Esparta focou na organização militar.
+        </p>
+        <p>
+          No século IV a.C., a Macedônia ampliou seu domínio. Alexandre, o Grande, conquistou terras na Ásia e Egito, propagando a cultura no <strong>período helenístico</strong>. Mais tarde, a Grécia foi integrada ao Império Romano e, na sequência, ao Império Bizantino.
+        </p>
+        <p>
+          Em 1453, Constantinopla foi tomada pelos otomanos, mantendo o domínio na região até a Guerra de Independência (1821–1830).
+        </p>
       </div>
     </section>
 
-  </div>
+    <!-- SEÇÃO 3: FORMAÇÃO ÉTNICA -->
+    <section id="etnica" class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-slate-100">
+      <div class="flex items-center gap-3 mb-6 border-b pb-4 border-slate-100">
+        <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xl">3</div>
+        <h2 class="font-title text-2xl md:text-3xl font-bold text-slate-900">Formação Étnica</h2>
+      </div>
 
-  <footer>
-    <p>Trabalho de Geografia & História — Grécia | Colégio Laly</p>
+      <p class="text-sm md:text-base text-slate-700 mb-6 leading-relaxed">
+        A formação étnica grega resulta de séculos de migrações e trocas culturais. Na Antiguidade, povos como aqueus, jônios, eólios e dórios formaram as primeiras comunidades helênicas.
+      </p>
+
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
+        <h3 class="font-bold text-amber-900 text-base mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-handshake text-amber-600"></i> O Tratado de Lausanne (1923)
+        </h3>
+        <p class="text-sm text-amber-950 leading-relaxed">
+          Um marco demográfico fundamental foi a troca populacional compulsória entre Grécia e Turquia em 1923 por meio do Tratado de Lausanne. Esse processo reorganizou a composição populacional de ambos os países. Hoje, a maioria se identifica como grega, existindo também minorias culturais diversas.
+        </p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: CRONOLOGIA DOS PRINCIPAIS FATOS -->
+    <section id="cronologia" class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-slate-100">
+      <div class="flex items-center gap-3 mb-6 border-b pb-4 border-slate-100">
+        <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xl">4</div>
+        <h2 class="font-title text-2xl md:text-3xl font-bold text-slate-900">Cronologia dos Principais Fatos</h2>
+      </div>
+
+      <!-- Filtros da Linha do Tempo -->
+      <div class="flex flex-wrap gap-2 mb-6">
+        <button onclick="filterTimeline('all')" class="filter-btn active bg-blue-600 text-white px-4 py-2 rounded-full text-xs font-semibold shadow-sm hover:bg-blue-700 transition">Todos os Fatos</button>
+        <button onclick="filterTimeline('antiga')" class="filter-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow-sm hover:bg-blue-600 hover:text-white transition">Antiguidade</button>
+        <button onclick="filterTimeline('bizantina')" class="filter-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow-sm hover:bg-blue-600 hover:text-white transition">Bizantina / Otomana</button>
+        <button onclick="filterTimeline('moderna')" class="filter-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow-sm hover:bg-blue-600 hover:text-white transition">Séc. XIX ao XXI</button>
+      </div>
+
+      <!-- Lista Scrollable de Eventos -->
+      <div id="timelineContainer" class="max-h-96 overflow-y-auto divide-y divide-slate-100 border border-slate-200 rounded-xl p-2 bg-slate-50">
+        <!-- Eventos inseridos dinamicamente pelo JS -->
+      </div>
+    </section>
+
+    <!-- SEÇÃO 5: ATUALIDADES DA GRÉCIA -->
+    <section id="atualidades" class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-slate-100">
+      <div class="flex items-center gap-3 mb-6 border-b pb-4 border-slate-100">
+        <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xl">5</div>
+        <h2 class="font-title text-2xl md:text-3xl font-bold text-slate-900">Atualidades da Grécia</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+          <h3 class="font-bold text-slate-900 text-base mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-cloud-showers-heavy text-blue-600"></i> Desafios Climáticos (2026)
+          </h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Em outubro de 2026, a Grécia enfrentou intensas chuvas e enchentes em ilhas turísticas como Rodes, mobilizando resgates e reacendendo debates sobre infraestrutura.
+          </p>
+        </div>
+
+        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+          <h3 class="font-bold text-slate-900 text-base mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-chart-line text-blue-600"></i> Economia & Sociedade
+          </h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            O país mantém atenção contínua à gestão dos fluxos migratórios no Mediterrâneo, custo de vida, habitação e modernização dos serviços públicos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 6: QUIZ INTERATIVO -->
+    <section id="quiz" class="bg-gradient-to-br from-blue-900 to-slate-900 text-white rounded-2xl p-6 md:p-8 shadow-xl">
+      <div class="flex items-center gap-3 mb-6 border-b border-blue-800 pb-4">
+        <div class="w-10 h-10 rounded-lg bg-amber-400 text-slate-900 flex items-center justify-center font-bold text-xl">6</div>
+        <div>
+          <h2 class="font-title text-2xl md:text-3xl font-bold text-white">Quiz de Fixação</h2>
+          <p class="text-xs text-blue-200">Teste o que aprendeu no trabalho!</p>
+        </div>
+      </div>
+
+      <form id="quizForm" class="space-y-6 text-sm">
+        <!-- Q1 -->
+        <div class="bg-white/10 p-4 rounded-xl border border-white/10">
+          <p class="font-semibold text-amber-300 mb-3">1. Qual cidade-Estado grega ficou conhecida pela democracia?</p>
+          <div class="space-y-2">
+            <label class="flex items-center gap-3 bg-white/5 p-2.5 rounded-lg cursor-pointer hover:bg-white/10 transition">
+              <input type="radio" name="q1" value="esparta" class="accent-amber-400"> Esparta
+            </label>
+            <label class="flex items-center gap-3 bg-white/5 p-2.5 rounded-lg cursor-pointer hover:bg-white/10 transition">
+              <input type="radio" name="q1" value="atenas" class="accent-amber-400"> Atenas
+            </label>
+            <label class="flex items-center gap-3 bg-white/5 p-2.5 rounded-lg cursor-pointer hover:bg-white/10 transition">
+              <input type="radio" name="q1" value="rodes" class="accent-amber-400"> Rodes
+            </label>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="bg-white/10 p-4 rounded-xl border border-white/10">
+          <p class="font-semibold text-amber-300 mb-3">2. Em que ano ocorreu o reconhecimento da independência grega?</p>
+          <div class="space-y-2">
+            <label class="flex items-center gap-3 bg-white/5 p-2.5 rounded-lg cursor-pointer hover:bg-white/10 transition">
+              <input type="radio" name="q2" value="1453" class="accent-amber-400"> 1453
+            </label>
+            <label class="flex items-center gap-3 bg-white/5 p-2.5 rounded-lg cursor-pointer hover:bg-white/10 transition">
+              <input type="radio" name="q2" value="1830" class="accent-amber-400"> 1830
+            </label>
+            <label class="flex items-center gap-3 bg-white/5 p-2.5 rounded-lg cursor-pointer hover:bg-white/10 transition">
+              <input type="radio" name="q2" value="1923" class="accent-amber-400"> 1923
+            </label>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="bg-white/10 p-4 rounded-xl border border-white/10">
+          <p class="font-semibold text-amber-300 mb-3">3. Qual acordo realizou a troca populacional compulsória em 1923?</p>
+          <div class="space-y-2">
+            <label class="flex items-center gap-3 bg-white/5 p-2.5 rounded-lg cursor-pointer hover:bg-white/10 transition">
+              <input type="radio" name="q3" value="lausanne" class="accent-amber-400"> Tratado de Lausanne
+            </label>
+            <label class="flex items-center gap-3 bg-white/5 p-2.5 rounded-lg cursor-pointer hover:bg-white/10 transition">
+              <input type="radio" name="q3" value="roma" class="accent-amber-400"> Tratado de Roma
+            </label>
+          </div>
+        </div>
+
+        <button type="button" onclick="checkQuiz()" class="w-full bg-amber-400 text-slate-900 font-bold py-3 rounded-xl hover:bg-amber-300 transition shadow-lg text-base">
+          Verificar Pontuação
+        </button>
+
+        <div id="quizResult" class="hidden text-center p-4 rounded-xl font-bold text-base"></div>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 text-center py-6 text-xs border-t border-slate-800">
+    <p>Trabalho de Geografia & História — Grécia | <strong>Colégio Laly</strong></p>
   </footer>
 
+  <!-- Script da Linha do Tempo e Quiz -->
   <script>
     const events = [
       { date: "3000–1450 a.C.", text: "Desenvolvimento da civilização minoica na ilha de Creta.", cat: "antiga" },
-      { date: "1600–1200 a.C.", text: "Florescimento da civilização micênica no continente.", cat: "antiga" },
-      { date: "c. 1200 a.C.", text: "Declínio dos centros micênicos e transformações sociais.", cat: "antiga" },
-      { date: "800 a.C.", text: "Expansão das cidades-Estado (pólis) e do comércio marítimo.", cat: "antiga" },
-      { date: "508–507 a.C.", text: "Reformas de Clístenes em Atenas (bases da democracia).", cat: "antiga" },
-      { date: "490–479 a.C.", text: "Guerras Médicas contra o Império Persa.", cat: "antiga" },
-      { date: "431–404 a.C.", text: "Guerra do Peloponeso entre Atenas e Esparta.", cat: "antiga" },
-      { date: "338 a.C.", text: "Vitória macedônica na Batalha de Queroneia.", cat: "antiga" },
+      { date: "1600–1200 a.C.", text: "Florescimento da civilização micênica.", cat: "antiga" },
+      { date: "800 a.C.", text: "Crescimento das cidades-Estado (pólis) e expansão do comércio.", cat: "antiga" },
+      { date: "508–507 a.C.", text: "Reformas de Clístenes em Atenas (democracia).", cat: "antiga" },
+      { date: "490–479 a.C.", text: "Guerras Médicas entre gregos e persas.", cat: "antiga" },
+      { date: "431–404 a.C.", text: "Guerra do Peloponeso (Atenas vs Esparta).", cat: "antiga" },
       { date: "336–323 a.C.", text: "Reinado e conquistas de Alexandre, o Grande.", cat: "antiga" },
-      { date: "323 a.C.", text: "Início do Período Helenístico.", cat: "antiga" },
       { date: "146 a.C.", text: "Conquista romana da Grécia continental.", cat: "antiga" },
-      { date: "330 d.C.", text: "Fundação de Constantinopla (Império Romano do Oriente).", cat: "bizantina" },
-      { date: "1054", text: "Cisma entre a Igreja Católica Romana e Ortodoxa.", cat: "bizantina" },
-      { date: "1204", text: "Conquista de Constantinopla na Quarta Cruzada.", cat: "bizantina" },
-      { date: "1261", text: "Recuperação bizantina de Constantinopla.", cat: "bizantina" },
+      { date: "330 d.C.", text: "Fundação de Constantinopla (Império Bizantino).", cat: "bizantina" },
       { date: "1453", text: "Conquista de Constantinopla pelo Império Otomano.", cat: "bizantina" },
-      { date: "1821", text: "Início da Guerra de Independência Grega.", cat: "moderna" },
-      { date: "1830", text: "Reconhecimento internacional da independência da Grécia.", cat: "moderna" },
-      { date: "1832", text: "Estabelecimento da monarquia grega.", cat: "moderna" },
-      { date: "1834", text: "Atenas passa a ser a capital oficial.", cat: "moderna" },
-      { date: "1864", text: "Incorporação das Ilhas Jônicas.", cat: "moderna" },
-      { date: "1912–1913", text: "Guerras Balcânicas e expansão do território.", cat: "moderna" },
-      { date: "1919–1922", text: "Guerra Greco-Turca.", cat: "moderna" },
+      { date: "1821", text: "Início da Guerra de Independência da Grécia.", cat: "moderna" },
+      { date: "1830", text: "Reconhecimento internacional da independência grega.", cat: "moderna" },
+      { date: "1834", text: "Atenas torna-se a capital da Grécia.", cat: "moderna" },
       { date: "1923", text: "Assinatura do Tratado de Lausanne (troca populacional).", cat: "moderna" },
-      { date: "1940–1944", text: "Segunda Guerra Mundial e ocupação pelas forças do Eixo.", cat: "moderna" },
-      { date: "1946–1949", text: "Guerra Civil Grega.", cat: "moderna" },
-      { date: "1947", text: "Incorporação das ilhas do Dodecaneso.", cat: "moderna" },
-      { date: "1967–1974", text: "Ditadura militar e posterior restauração da democracia.", cat: "moderna" },
-      { date: "1981", text: "Adesão à Comunidade Econômica Europeia.", cat: "moderna" },
-      { date: "2001-2002", text: "Adoção oficial do Euro em substituição à dracma.", cat: "moderna" },
-      { date: "2009–2018", text: "Crise da dívida pública e programas de austeridade.", cat: "moderna" },
+      { date: "1981", text: "Entrada na Comunidade Econômica Europeia.", cat: "moderna" },
+      { date: "2002", text: "Entrada do euro em circulação.", cat: "moderna" },
       { date: "2020", text: "Eleição de Katerina Sakellaropoulou (1ª mulher presidente).", cat: "moderna" },
-      { date: "2023", text: "Acidentes ferroviários e debates sobre infraestrutura pública.", cat: "moderna" },
-      { date: "2024-2026", text: "Reformas econômicas e desafios climáticos (enchentes em Rodes).", cat: "moderna" }
+      { date: "2026", text: "Desafios climáticos e enchentes na ilha de Rodes.", cat: "moderna" }
     ];
 
     function renderTimeline(filter = 'all') {
-      const container = document.getElementById('timelineList');
+      const container = document.getElementById('timelineContainer');
       container.innerHTML = '';
       
-      const filteredEvents = filter === 'all' ? events : events.filter(e => e.cat === filter);
+      const filtered = filter === 'all' ? events : events.filter(e => e.cat === filter);
       
-      filteredEvents.forEach(e => {
+      filtered.forEach(e => {
         const item = document.createElement('div');
-        item.className = 'timeline-item';
-        item.innerHTML = `<span class="timeline-date">${e.date}</span><span>${e.text}</span>`;
+        item.className = 'py-3 px-4 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 hover:bg-slate-100 transition';
+        item.innerHTML = `
+          <span class="font-bold text-blue-700 text-xs sm:text-sm min-w-[130px] font-mono">${e.date}</span>
+          <span class="text-xs sm:text-sm text-slate-700">${e.text}</span>
+        `;
         container.appendChild(item);
       });
     }
 
     function filterTimeline(cat) {
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white');
+        btn.classList.add('bg-slate-200', 'text-slate-700');
+      });
+      event.target.classList.remove('bg-slate-200', 'text-slate-700');
+      event.target.classList.add('bg-blue-600', 'text-white');
       renderTimeline(cat);
     }
 
@@ -426,13 +354,15 @@
       if (q2 === '1830') score++;
       if (q3 === 'lausanne') score++;
 
-      const res = document.getElementById('quiz-result');
+      const res = document.getElementById('quizResult');
+      res.classList.remove('hidden', 'bg-emerald-500/20', 'text-emerald-300', 'bg-rose-500/20', 'text-rose-300');
+      
       if (score === 3) {
-        res.style.color = '#2e7d32';
-        res.innerText = 'Excelente! Você acertou todas as 3 perguntas!';
+        res.classList.add('bg-emerald-500/20', 'text-emerald-300', 'border', 'border-emerald-500/30');
+        res.innerText = 'Parabéns! Você acertou todas as 3 perguntas!';
       } else {
-        res.style.color = '#c62828';
-        res.innerText = `Você acertou ${score} de 3 perguntas. Revise os pontos e tente novamente!`;
+        res.classList.add('bg-rose-500/20', 'text-rose-300', 'border', 'border-rose-500/30');
+        res.innerText = `Você acertou ${score} de 3 perguntas. Revise o texto e tente novamente!`;
       }
     }
 
